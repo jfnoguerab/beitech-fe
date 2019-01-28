@@ -33,10 +33,12 @@
               <div class="form-group col-md-6">
                 <label for="startDate"><b>Start date</b></label>
                 <input type="date" class="form-control" ng-model="startDate">
+                <small class="text-muted">Format: (dd/mm/yyyy)</small>
               </div>
               <div class="form-group col-md-6">
                 <label for="endDate"><b>End date</b></label>
                 <input type="date" class="form-control" ng-model="endDate">
+                <small class="text-muted">Format: (dd/mm/yyyy)</small>
               </div>
             </div>
             <button type="submit" class="btn btn-block btn-dark" ng-click="getOrders()">Search Orders</button>

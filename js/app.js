@@ -1,4 +1,4 @@
-var app = angular.module('beitechFe', []);
+var app = angular.module('beitechFe', ['ngAnimate']);
 
 app.controller('customersController', function($scope, $filter, $http) {
 	$scope.customers = [];

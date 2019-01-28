@@ -1,6 +1,20 @@
-    .navbar-brand{
-      color: #ffffff;
-    }
-    .jumbotron {
-        padding: 1rem 1rem 2rem 1rem;
-    }
+.ng-hide {
+  opacity: 0;
+}
+
+.ng-hide-add,
+.ng-hide-remove {
+  transition: all linear 0.5s;
+}
+
+.check-element {
+  border: 1px solid black;
+  opacity: 1;
+  padding: 10px;
+}
+.navbar-brand{
+  color: #ffffff;
+}
+.jumbotron {
+    padding: 1rem 1rem 2rem 1rem;
+}

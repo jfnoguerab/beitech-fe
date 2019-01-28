@@ -1,13 +1,15 @@
 <!DOCTYPE html>
-<html lang="en" >
+<html lang="en" ng-app="beitechFe">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>Customers</title>
   <link href='css/bootstrap.min.css' rel="stylesheet" type="text/css"></link>
   <link href='css/app.css' rel="stylesheet" type="text/css"></link>
+  <script src="js/angular.min.js" type="text/javascript" ></script>
+  <script src="js/app.js" type="text/javascript" ></script>
 </head>
-<body>
+<body ng-controller="customersController">
 
 <!-- Navigation -->
 <nav class="navbar navbar-dark bg-dark">
@@ -22,27 +24,35 @@
           <form>
             <div class="form-group">
               <label for="customer"><b>Customer</b></label>
-              <select class="form-control" id="customer" name="customer">
-                <option > Select customer </option>
+              <select class="form-control" ng-options="customer.name for customer in customers track by customer.customer_id" ng-model='listCustomer' required>
+              <option value="">Select Customer</option>
               </select>
             </div>
             <div class="form-row">
               <div class="form-group col-md-6">
                 <label for="startDate"><b>Start date</b></label>
-                <input type="date" class="form-control" id="startDate">
+                <input type="date" class="form-control" ng-model="startDate">
               </div>
               <div class="form-group col-md-6">
                 <label for="endDate"><b>End date</b></label>
-                <input type="date" class="form-control" id="endDate">
+                <input type="date" class="form-control" ng-model="endDate">
               </div>
             </div>
-            <button type="submit" class="btn btn-block btn-dark">Search Orders</button>
+            <button type="submit" class="btn btn-block btn-dark" ng-click="getOrders()">Search Orders</button>
           </form>
       </div>
     </div>
 
     <div class="col-md-8 mt-3 col-sm-12 col-xs-12">
-      <div class="table-responsive">
+
+      <div class="alert alert-{{alert.class}} fade show" role="alert" ng-show="alert.show">
+        {{alert.message}}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close" ng-click="alert.close()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <div class="table-responsive animate-show-hide" ng-show="showData">
         <table class="table table-bordered">
           <thead class="thead-dark">
             <tr>
@@ -54,20 +64,17 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>01-05-2017</td>
-              <td>84564</td>
-              <td>$ 30.56</td>
-              <td>15 Queens Park Road,<br />W32 YYY, UK</td>
-              <td>2 x Product A <br /> 1 x Product B</td>
+
+            <tr ng-repeat="order in orderList">
+              <td>{{ order.creation_date | date :  "dd-MM-yyyy" }}</td>
+              <td>{{ order.order_id }}</td>
+              <td>$ {{ order.total }}</td>
+              <td>{{ order.delivery_address }}</td>
+              <td><div ng-repeat="detail in order.order_details">
+                  <span> {{ detail.quantity }} x {{ detail.product_description }}</span>
+                </div></td>
             </tr>
-            <tr>
-              <td>01-05-2017</td>
-              <td>84564</td>
-              <td>$ 30.56</td>
-              <td>15 Queens Park Road,<br />W32 YYY, UK</td>
-              <td>2 x Product A <br /> 1 x Product B</td>
-            </tr>
+
           </tbody>
         </table>
       </div>

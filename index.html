@@ -1,26 +1,80 @@
-<!doctype html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <meta content="width=device-width,initial-scale=1,minimal-ui" name="viewport">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic|Material+Icons">
-    <link rel="stylesheet" href="https://unpkg.com/vue-material@beta/dist/vue-material.min.css">
-    <link rel="stylesheet" href="https://unpkg.com/vue-material@beta/dist/theme/default.css">
-  </head>
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Customers</title>
+  <link href='css/bootstrap.min.css' rel="stylesheet" type="text/css"></link>
+  <link href='css/app.css' rel="stylesheet" type="text/css"></link>
+</head>
+<body>
 
-  <body>
-    <div id="app">
-      <!-- Your code here -->
+<!-- Navigation -->
+<nav class="navbar navbar-dark bg-dark">
+ <span class="navbar-brand mb-2 h1">Order list</span>
+</nav>
+
+<div class="container-fluid">
+
+  <div class="row">
+    <div class="col-md-4 col-sm-12 col-xs-12">
+      <div class="jumbotron">
+          <form>
+            <div class="form-group">
+              <label for="customer"><b>Customer</b></label>
+              <select class="form-control" id="customer" name="customer">
+                <option > Select customer </option>
+              </select>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="startDate"><b>Start date</b></label>
+                <input type="date" class="form-control" id="startDate">
+              </div>
+              <div class="form-group col-md-6">
+                <label for="endDate"><b>End date</b></label>
+                <input type="date" class="form-control" id="endDate">
+              </div>
+            </div>
+            <button type="submit" class="btn btn-block btn-dark">Search Orders</button>
+          </form>
+      </div>
     </div>
 
-    <script src="https://unpkg.com/vue"></script>
-    <script src="https://unpkg.com/vue-material@beta"></script>
-    <script>
-      Vue.use(VueMaterial.default)
+    <div class="col-md-8 mt-3 col-sm-12 col-xs-12">
+      <div class="table-responsive">
+        <table class="table table-bordered">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">Creation Date</th>
+              <th scope="col">Order ID</th>
+              <th scope="col">Total $</th>
+              <th scope="col">Delivery Address</th>
+              <th scope="col">Products</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>01-05-2017</td>
+              <td>84564</td>
+              <td>$ 30.56</td>
+              <td>15 Queens Park Road,<br />W32 YYY, UK</td>
+              <td>2 x Product A <br /> 1 x Product B</td>
+            </tr>
+            <tr>
+              <td>01-05-2017</td>
+              <td>84564</td>
+              <td>$ 30.56</td>
+              <td>15 Queens Park Road,<br />W32 YYY, UK</td>
+              <td>2 x Product A <br /> 1 x Product B</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
 
-      new Vue({
-        el: '#app'
-      });
-    </script>
-  </body>
-</html>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>﻿
